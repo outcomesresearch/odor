@@ -1,19 +1,28 @@
 <template>
   <outcomes-research-wrapper :_title="`NOSE HHT Questionnaire`">
-    <div id="app">
-      <img alt="Vue logo" src="./assets/logo.png" />
-      <HelloWorld msg="Welcome to Your Vue.js App" />
-    </div>
+    <v-app>
+      <div id="app">
+        <Stepper msg="Welcome to Your Vue.js App" />
+      </div>
+      <v-footer v-bind="localAttrs" :padless="true">
+        <v-card flat tile width="100%" class="grey-lighten-2 text-center">
+          <v-card-text>
+            NOSE HHT Copyright 2020 Washington University School of Medicine,
+            St. Louis, Missouri
+          </v-card-text>
+        </v-card>
+      </v-footer>
+    </v-app>
   </outcomes-research-wrapper>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import Stepper from './components/Stepper';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Stepper,
   },
 };
 </script>
@@ -25,6 +34,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#app .v-stepper__label {
+  line-height: 1.3;
 }
 </style>
