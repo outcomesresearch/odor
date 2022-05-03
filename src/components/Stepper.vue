@@ -108,43 +108,17 @@
 </template>
 
 <script>
-const SECTION1_PROMPTS = [
-  'Blocked up, stuffy nose',
-  'Nasal crusting',
-  'Blood running down back of your throat',
-  'Decreased sense of smell or taste',
-  'Shortness of breath',
-  'Fatigue',
-];
+import {
+  SECTION1_PROMPTS,
+  SECTION2_PROMPTS,
+  SECTION3_PROMPTS,
+} from '../assets/prompts';
 
-const SECTION2_PROMPTS = [
-  'Blow your nose',
-  'Breathe through your nose',
-  'Work at your job (or school)',
-  'Enjoy time with friends or family',
-  'Have intimacy with spouse or significant other',
-  'Bend over/pick something up off the ground',
-  'Fall asleep',
-  'Stay asleep',
-  'Exercise',
-  'Go outdoors regardless of the weather or season',
-  'Eat certain foods (i.e. spicy)',
-  'Cook or prepare meals',
-  'Clean your house/apartment',
-  'Travel (i.e. by plane)',
-];
-
-const SECTION3_PROMPTS = [
-  'Fear of not being able to stop a nosebleed ',
-  'Fear of nosebleeds in public',
-  'Sadness',
-  'Embarrassment',
-  'Reduced concentration',
-  'Fear about nosebleeds in public',
-  'Frustration, restlessness, irritability',
-  'Getting blood on your clothes',
-  'The need to buy new clothes',
-];
+import {
+  SECTION1_OPTIONS,
+  SECTION2_OPTIONS,
+  SECTION3_OPTIONS,
+} from '../assets/options';
 
 const initValues = (arr) => arr.reduce((a, i) => ({ ...a, [i]: null }), {});
 
@@ -182,35 +156,17 @@ export default {
       section1: {
         prompts: SECTION1_PROMPTS,
         values: initValues(SECTION1_PROMPTS),
-        options: initOptions([
-          'No problem',
-          'Mild problem',
-          'Moderate problem',
-          'Severe problem',
-          'As bad as possible',
-        ]),
+        options: initOptions(SECTION1_OPTIONS),
       },
       section2: {
         prompts: SECTION2_PROMPTS,
         values: initValues(SECTION2_PROMPTS),
-        options: initOptions([
-          'No difficulty',
-          'Mild difficulty',
-          'Moderate difficulty',
-          'Severe difficulty',
-          'Complete difficulty',
-        ]),
+        options: initOptions(SECTION2_OPTIONS),
       },
       section3: {
         prompts: SECTION3_PROMPTS,
         values: initValues(SECTION3_PROMPTS),
-        options: initOptions([
-          'Not bothered',
-          'Very rarely bothered',
-          'Rarely bothered',
-          'Frequently bothered',
-          'Very frequently bothered',
-        ]),
+        options: initOptions(SECTION3_OPTIONS),
       },
     };
   },
