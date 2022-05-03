@@ -269,6 +269,15 @@ export default {
   max-width: 800px;
 }
 
+tbody tr:hover,
+.v-stepper .v-stepper__step--editable:hover {
+  background-color: transparent !important;
+}
+
+#app .v-card__text p {
+  font-size: 15px;
+}
+
 #app .v-card__title {
   word-break: keep-all;
 }
@@ -281,8 +290,8 @@ export default {
   padding-left: 0px;
 }
 
-#app .v-input {
-  font-size: 14px;
+#app tr th, #app .v-input {
+  font-size: 14px !important;
 }
 
 #app .prompt {
