@@ -152,24 +152,36 @@
             >
               <tr class="mild">
                 <td class="text-left">Mild</td>
-                <td :class="sum <= 27 && `outline`">
-                  &lt;=27
+                <td>
+                  <div :class="sum <= 27 && `outline`">
+                    &lt;=27
+                  </div>
                 </td>
-                <td :class="average <= 1 && `outline`">&lt;=1</td>
+                <td>
+                  <div :class="average <= 1 && `outline`">&lt;=1</div>
+                </td>
               </tr>
               <tr class="moderate">
                 <td class="text-left">Moderate</td>
-                <td :class="sum >= 28 && sum <= 54 && `outline`">
-                  28 to 54
+                <td>
+                  <div :class="sum >= 28 && sum <= 54 && `outline`">
+                    28 to 54
+                  </div>
                 </td>
-                <td :class="average > 1.01 && average <= 2 && `outline`">
-                  1.01 to 2
+                <td>
+                  <div :class="average > 1.01 && average <= 2 && `outline`">
+                    1.01 to 2
+                  </div>
                 </td>
               </tr>
               <tr class="severe">
                 <td class="text-left">Severe</td>
-                <td :class="sum > 54 && `outline`">&gt;54</td>
-                <td :class="average > 2 && `outline`">&gt;2</td>
+                <td>
+                  <div :class="sum > 54 && `outline`">
+                    &gt;54
+                  </div>
+                </td>
+                <td><div :class="average > 2 && `outline`">&gt;2</div></td>
               </tr>
             </tbody>
           </template>
@@ -362,6 +374,8 @@ tbody tr:hover,
   border-radius: 10px;
   border-width: 3px !important;
   border-style: solid;
+  margin: 2px;
+  padding: 4px;
 }
 
 .mild .outline {
