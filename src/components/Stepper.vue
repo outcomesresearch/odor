@@ -6,7 +6,7 @@
         Telangiectasia (NOSE HHT)
       </v-card-title>
       <v-card-text style="text-align: left;">
-        <p>
+        <p class="has-text-grey">
           Below you will find a list of physical, functional, and emotional
           consequences of your nosebleeds. We would like to know more about
           these problems and would appreciate you answering the following
@@ -15,7 +15,7 @@
           problems as they have been over
           <strong class="underline">the past two weeks</strong>.
         </p>
-        <p class="mb-0">
+        <p class="mb-0 has-text-grey">
           Thank you for your participation. Do not hesitate to ask for
           assistance if necessary.
         </p>
@@ -131,7 +131,7 @@
             <pre>Average: {{ average.toFixed(3) }}</pre>
           </span>
         </h4>
-        <v-simple-table>
+        <v-simple-table class="my-2">
           <template v-slot:default>
             <thead>
               <tr>
@@ -174,6 +174,13 @@
             </tbody>
           </template>
         </v-simple-table>
+        <p class="has-text-grey">
+          The NOSE HHT can be used to measure the change in physical and
+          functional problems, functional imitations, and emotional consequences
+          of nosebleeds over time and as a result of treatment. A change of 13
+          points in the sum score or 0.46 in the mean score between two times
+          should be considered a clinically meaningful difference.
+        </p>
       </div>
     </v-stepper>
   </div>
@@ -269,6 +276,10 @@ export default {
   max-width: 800px;
 }
 
+.has-text-grey {
+  color: rgba(0, 0, 0, 0.87);
+}
+
 tbody tr:hover,
 .v-stepper .v-stepper__step--editable:hover {
   background-color: transparent !important;
@@ -290,7 +301,8 @@ tbody tr:hover,
   padding-left: 0px;
 }
 
-#app tr th, #app .v-input {
+#app tr th,
+#app .v-input {
   font-size: 14px !important;
 }
 
