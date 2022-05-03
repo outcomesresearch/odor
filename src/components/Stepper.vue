@@ -21,89 +21,161 @@
         </p>
       </v-card-text>
     </v-card>
-    <v-form ref="form" v-model="valid" lazy-validation>
-      <v-stepper v-model="e6" vertical @change="handleStepChange">
-        <v-stepper-step :complete="e6 > 1" step="1" editable class="step-label">
-          How severe are the following problems
-          <strong>due to your nosebleeds</strong>?
-        </v-stepper-step>
-        <v-stepper-content step="1">
-          <div class="_table">
-            <div class="_row" v-for="prompt in section1.prompts" :key="prompt">
-              <div class="prompt">{{ prompt }}</div>
-              <v-select
-                class="options"
-                v-model="section1.values[prompt]"
-                :items="section1.options"
-                item-text="text"
-                item-value="value"
-                :rules="rules"
-                dense
-              ></v-select>
+    <v-stepper v-model="e6" vertical @change="handleStepChange">
+      <div>
+        <v-form ref="form1" v-model="section1.valid" lazy-validation>
+          <v-stepper-step
+            :complete="e6 > 1"
+            step="1"
+            editable
+            class="step-label"
+          >
+            How severe are the following problems
+            <strong>due to your nosebleeds</strong>?
+          </v-stepper-step>
+          <v-stepper-content step="1">
+            <div class="_table">
+              <div
+                class="_row"
+                v-for="prompt in section1.prompts"
+                :key="prompt"
+              >
+                <div class="prompt">{{ prompt }}</div>
+                <v-select
+                  class="options"
+                  v-model="section1.values[prompt]"
+                  :items="section1.options"
+                  item-text="text"
+                  item-value="value"
+                  :rules="rules"
+                  dense
+                  @change="calculateResults"
+                ></v-select>
+              </div>
             </div>
-          </div>
-        </v-stepper-content>
-
-        <v-stepper-step :complete="e6 > 2" step="2" editable class="step-label">
-          How difficult is it to perform the following tasks
-          <strong>due to your nosebleeds</strong>?
-        </v-stepper-step>
-        <v-stepper-content step="2" editable>
-          <div class="_table">
-            <div class="_row" v-for="prompt in section2.prompts" :key="prompt">
-              <div class="prompt">{{ prompt }}</div>
-              <v-select
-                class="options"
-                v-model="section2.values[prompt]"
-                :items="section2.options"
-                item-text="text"
-                item-value="value"
-                :rules="rules"
-                dense
-              ></v-select>
+          </v-stepper-content>
+        </v-form>
+        <v-form ref="form2" v-model="section2.valid" lazy-validation>
+          <v-stepper-step
+            :complete="e6 > 2"
+            step="2"
+            editable
+            class="step-label"
+          >
+            How difficult is it to perform the following tasks
+            <strong>due to your nosebleeds</strong>?
+          </v-stepper-step>
+          <v-stepper-content step="2" editable>
+            <div class="_table">
+              <div
+                class="_row"
+                v-for="prompt in section2.prompts"
+                :key="prompt"
+              >
+                <div class="prompt">{{ prompt }}</div>
+                <v-select
+                  class="options"
+                  v-model="section2.values[prompt]"
+                  :items="section2.options"
+                  item-text="text"
+                  item-value="value"
+                  :rules="rules"
+                  dense
+                  @change="calculateResults"
+                ></v-select>
+              </div>
             </div>
-          </div>
-        </v-stepper-content>
-
-        <v-stepper-step :complete="e6 > 3" step="3" editable class="step-label">
-          How bothered are you by the following
-          <strong>due to your nosebleeds</strong>?
-        </v-stepper-step>
-        <v-stepper-content step="3">
-          <div class="_table">
-            <div class="_row" v-for="prompt in section3.prompts" :key="prompt">
-              <div class="prompt">{{ prompt }}</div>
-              <v-select
-                class="options"
-                v-model="section3.values[prompt]"
-                :items="section3.options"
-                item-text="text"
-                item-value="value"
-                :rules="rules"
-                dense
-              ></v-select>
+          </v-stepper-content>
+        </v-form>
+        <v-form ref="form3" v-model="section3.valid" lazy-validation>
+          <v-stepper-step
+            :complete="e6 > 3"
+            step="3"
+            editable
+            class="step-label"
+          >
+            How bothered are you by the following
+            <strong>due to your nosebleeds</strong>?
+          </v-stepper-step>
+          <v-stepper-content step="3">
+            <div class="_table">
+              <div
+                class="_row"
+                v-for="prompt in section3.prompts"
+                :key="prompt"
+              >
+                <div class="prompt">{{ prompt }}</div>
+                <v-select
+                  class="options"
+                  v-model="section3.values[prompt]"
+                  :items="section3.options"
+                  item-text="text"
+                  item-value="value"
+                  :rules="rules"
+                  dense
+                  @change="calculateResults"
+                ></v-select>
+              </div>
             </div>
-          </div>
-        </v-stepper-content>
-
-        <v-stepper-step :complete="e6 > 3" step="4" editable>
-          Results:
-        </v-stepper-step>
-        <v-stepper-content step="4">
-          <v-btn :disabled="!valid" color="success" class="mr-4">
-            Submit
-          </v-btn>
-          <div v-if="!result">
-            <div>
-              Sum of all items: <span>{{ sum() }}</span>
-            </div>
-            <div>
-              Average of all items: <span>{{ average().toFixed(3) }}</span>
-            </div>
-          </div>
-        </v-stepper-content>
-      </v-stepper></v-form
-    >
+          </v-stepper-content>
+        </v-form>
+      </div>
+      <v-divider></v-divider>
+      <div class="results">
+        <h4 class="result-text">
+          <span v-if="!allFieldsHaveValues">
+            Results will display here when form is complete.</span
+          ><span v-else
+            ><h3 style="color: black;">Result:</h3>
+            <pre>Sum: {{ sum }}</pre>
+            <pre>Average: {{ average.toFixed(3) }}</pre>
+          </span>
+        </h4>
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th class="text-left">
+                  NOSE-HHT Score Interpretation
+                </th>
+                <th class="text-center">
+                  Based on Sum
+                </th>
+                <th class="text-center">
+                  Based on Average
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="text-center"
+              :class="allFieldsHaveValues ? `showOutlines` : ''"
+            >
+              <tr class="mild">
+                <td class="text-left">Mild</td>
+                <td :class="sum <= 27 && `outline`">
+                  &lt;=27
+                </td>
+                <td :class="average <= 1 && `outline`">&lt;=1</td>
+              </tr>
+              <tr class="moderate">
+                <td class="text-left">Moderate</td>
+                <td :class="sum >= 28 && sum <= 54 && `outline`">
+                  28 to 54
+                </td>
+                <td :class="average > 1.01 && average <= 2 && `outline`">
+                  1.01 to 2
+                </td>
+              </tr>
+              <tr class="severe">
+                <td class="text-left">Severe</td>
+                <td :class="sum > 54 && `outline`">&gt;54</td>
+                <td :class="average > 2 && `outline`">&gt;2</td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+      </div>
+    </v-stepper>
   </div>
 </template>
 
@@ -132,41 +204,56 @@ const fetchAllValues = (sections) => {
 
 export default {
   computed: {
+    allFieldsHaveValues() {
+      return fetchAllValues(this.allSections).every((e) => e !== null);
+    },
     allSections() {
       return [this.section1, this.section2, this.section3];
     },
   },
   methods: {
-    handleStepChange(step) {
-      if (step === '4') return this.$refs.form.validate();
+    calculateResults() {
+      // If not all fields are answered yet, return, else update running results
+      if (!this.allFieldsHaveValues) return;
+      this.sum = this.calculateSum();
+      this.average = this.calculateAverage();
     },
-    sum() {
+    handleStepChange(step) {
+      // If we're later than the first step, validate the previous step
+      if (parseInt(step) > 1) {
+        this.$refs[`form${parseInt(step) - 1}`].validate();
+      }
+    },
+    calculateSum() {
       // for each section, add its values
       return fetchAllValues(this.allSections).reduce((a, i) => a + i, 0);
     },
-    average() {
+    calculateAverage() {
       // Get sum, then divide it out by number of questions
       let { length } = fetchAllValues(this.allSections);
-      return this.sum() / length;
+      return this.sum / length;
     },
   },
   data() {
     return {
       e6: 1,
-      valid: false,
-      result: null,
+      sum: undefined,
+      average: undefined,
       rules: [(v) => v !== null || 'Name is required'],
       section1: {
+        valid: false,
         prompts: SECTION1_PROMPTS,
         values: initValues(SECTION1_PROMPTS),
         options: initOptions(SECTION1_OPTIONS),
       },
       section2: {
+        valid: false,
         prompts: SECTION2_PROMPTS,
         values: initValues(SECTION2_PROMPTS),
         options: initOptions(SECTION2_OPTIONS),
       },
       section3: {
+        valid: false,
         prompts: SECTION3_PROMPTS,
         values: initValues(SECTION3_PROMPTS),
         options: initOptions(SECTION3_OPTIONS),
@@ -207,7 +294,18 @@ export default {
 ._table {
   display: grid;
   padding-left: 10px;
+  padding-bottom: 20px;
   grid-gap: 20px;
+}
+
+#app th:first-child,
+#app td:first-child {
+  padding-left: 0px !important;
+}
+
+#app th:last-child,
+#app td:last-child {
+  padding-right: 0px !important;
 }
 
 ._row {
@@ -226,5 +324,34 @@ export default {
   .page-padding {
     padding: 10px;
   }
+}
+
+.results {
+  padding: 24px 24px 0px 24px;
+}
+
+.result-text {
+  font-style: oblique;
+  color: grey;
+  padding-bottom: 10px;
+}
+
+/* Table styles  */
+.showOutlines .outline {
+  border-radius: 10px;
+  border-width: 3px !important;
+  border-style: solid;
+}
+
+.mild .outline {
+  border-color: #ffec19 !important;
+}
+
+.moderate .outline {
+  border-color: orange !important;
+}
+
+.severe .outline {
+  border-color: #f6412d !important;
 }
 </style>
