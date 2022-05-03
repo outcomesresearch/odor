@@ -131,19 +131,22 @@ const fetchAllValues = (sections) => {
 };
 
 export default {
+  computed: {
+    allSections() {
+      return [this.section1, this.section2, this.section3];
+    },
+  },
   methods: {
     handleStepChange(step) {
       if (step === '4') return this.$refs.form.validate();
     },
     sum() {
       // for each section, add its values
-      let sections = [this.section1, this.section2, this.section3];
-      return fetchAllValues(sections).reduce((a, i) => a + i, 0);
+      return fetchAllValues(this.allSections).reduce((a, i) => a + i, 0);
     },
     average() {
       // Get sum, then divide it out by number of questions
-      let sections = [this.section1, this.section2, this.section3];
-      let { length } = fetchAllValues(sections);
+      let { length } = fetchAllValues(this.allSections);
       return this.sum() / length;
     },
   },
