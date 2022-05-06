@@ -41,16 +41,19 @@
                 :key="prompt"
               >
                 <div class="prompt">{{ prompt }}</div>
-                <v-select
-                  class="options"
+                <v-radio-group
+                  :column="isSmallWidth"
                   v-model="section1.values[prompt]"
-                  :items="section1.options"
-                  item-text="text"
-                  item-value="value"
-                  :rules="rules"
-                  dense
                   @change="calculateResults"
-                ></v-select>
+                  :rules="rules"
+                >
+                  <v-radio
+                    v-for="option in section1.options"
+                    :key="option.text + option.value"
+                    :label="option.text"
+                    :value="option.value"
+                  ></v-radio>
+                </v-radio-group>
               </div>
             </div>
           </v-stepper-content>
@@ -73,16 +76,19 @@
                 :key="prompt"
               >
                 <div class="prompt">{{ prompt }}</div>
-                <v-select
-                  class="options"
+                <v-radio-group
+                  :column="isSmallWidth"
                   v-model="section2.values[prompt]"
-                  :items="section2.options"
-                  item-text="text"
-                  item-value="value"
-                  :rules="rules"
-                  dense
                   @change="calculateResults"
-                ></v-select>
+                  :rules="rules"
+                >
+                  <v-radio
+                    v-for="option in section2.options"
+                    :key="option.text + option.value"
+                    :label="option.text"
+                    :value="option.value"
+                  ></v-radio>
+                </v-radio-group>
               </div>
             </div>
           </v-stepper-content>
@@ -105,16 +111,19 @@
                 :key="prompt"
               >
                 <div class="prompt">{{ prompt }}</div>
-                <v-select
-                  class="options"
+                <v-radio-group
+                  :column="isSmallWidth"
                   v-model="section3.values[prompt]"
-                  :items="section3.options"
-                  item-text="text"
-                  item-value="value"
-                  :rules="rules"
-                  dense
                   @change="calculateResults"
-                ></v-select>
+                  :rules="rules"
+                >
+                  <v-radio
+                    v-for="option in section3.options"
+                    :key="option.text + option.value"
+                    :label="option.text"
+                    :value="option.value"
+                  ></v-radio>
+                </v-radio-group>
               </div>
             </div>
           </v-stepper-content>
@@ -252,13 +261,17 @@ export default {
       let { length } = fetchAllValues(this.allSections);
       return this.sum / length;
     },
+    onResize() {
+      this.isSmallWidth = window.innerWidth < 600;
+    },
   },
   data() {
     return {
       e6: 1,
+      isSmallWidth: window.innerWidth < 600,
       sum: undefined,
       average: undefined,
-      rules: [(v) => v !== null || 'Name is required'],
+      rules: [(v) => v !== null],
       section1: {
         valid: false,
         prompts: SECTION1_PROMPTS,
@@ -278,6 +291,14 @@ export default {
         options: initOptions(SECTION3_OPTIONS),
       },
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize);
   },
 };
 </script>
@@ -305,6 +326,14 @@ tbody tr:hover,
   word-break: keep-all;
 }
 
+#app .v-input--radio-group {
+  margin-top: 0px;
+}
+
+#app .v-messages.error--text {
+  display: none;
+}
+
 #app .underline {
   text-decoration: underline;
 }
@@ -315,6 +344,10 @@ tbody tr:hover,
 
 #app tr th,
 #app .v-input {
+  font-size: 14px !important;
+}
+
+#app .v-label {
   font-size: 14px !important;
 }
 
@@ -343,8 +376,8 @@ tbody tr:hover,
 
 ._row {
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: auto 150px;
+  grid-gap: 10px;
+  grid-template-rows: min-content min-content;
   text-align: left;
   align-items: center;
 }
@@ -356,6 +389,10 @@ tbody tr:hover,
 @media only screen and (max-width: 600px) {
   .page-padding {
     padding: 10px;
+  }
+
+  #app .v-label {
+    font-size: 16px !important;
   }
 }
 
