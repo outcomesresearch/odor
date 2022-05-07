@@ -1,11 +1,11 @@
 <template>
-  <div class="card-stepper mx-auto page-padding">
+  <div class="card-stepper mx-auto pa-3 pa-sm-12 text-left">
     <v-card class="my-12 mt-0">
       <v-card-title>
         Nasal Outcome Score for Epistaxis in Hereditary Hemorrhagic
         Telangiectasia (NOSE HHT)
       </v-card-title>
-      <v-card-text style="text-align: left;">
+      <v-card-text>
         <p class="has-text-grey">
           Below you will find a list of physical, functional, and emotional
           consequences of your nosebleeds. We would like to know more about
@@ -13,7 +13,7 @@
           questions to the best of your ability. There are no right or wrong
           answers, as your responses are unique to you. Please rate your
           problems as they have been over
-          <strong class="underline">the past two weeks</strong>.
+          <strong class="text-decoration-underline">the past two weeks</strong>.
         </p>
         <p class="mb-0 has-text-grey">
           Thank you for your participation. Do not hesitate to ask for
@@ -28,7 +28,7 @@
             How severe are the following problems
             <strong>due to your nosebleeds</strong>?
           </v-card-subtitle>
-          <v-card-text class="_table">
+          <v-card-text class="_table pb-5">
             <div class="_row" v-for="prompt in section1.prompts" :key="prompt">
               <div class="prompt">{{ prompt }}</div>
               <v-radio-group
@@ -36,6 +36,7 @@
                 v-model="section1.values[prompt]"
                 @change="calculateResults"
                 :rules="rules"
+                class="mt-0"
               >
                 <v-radio
                   v-for="option in section1.options"
@@ -53,7 +54,7 @@
             How difficult is it to perform the following tasks
             <strong>due to your nosebleeds</strong>?
           </v-card-subtitle>
-          <v-card-text class="_table">
+          <v-card-text class="_table pb-5">
             <div class="_row" v-for="prompt in section2.prompts" :key="prompt">
               <div class="prompt">{{ prompt }}</div>
               <v-radio-group
@@ -61,6 +62,7 @@
                 v-model="section2.values[prompt]"
                 @change="calculateResults"
                 :rules="rules"
+                class="mt-0"
               >
                 <v-radio
                   v-for="option in section2.options"
@@ -78,7 +80,7 @@
             How bothered are you by the following
             <strong>due to your nosebleeds</strong>?
           </v-card-subtitle>
-          <v-card-text class="_table">
+          <v-card-text class="_table pb-5">
             <div class="_row" v-for="prompt in section3.prompts" :key="prompt">
               <div class="prompt">{{ prompt }}</div>
               <v-radio-group
@@ -86,6 +88,7 @@
                 v-model="section3.values[prompt]"
                 @change="calculateResults"
                 :rules="rules"
+                class="mt-0"
               >
                 <v-radio
                   v-for="option in section3.options"
@@ -99,12 +102,12 @@
         </v-form>
       </div>
       <v-divider class="my-2"></v-divider>
-      <v-card-text class="results">
-        <h4 class="result-text">
+      <v-card-text class="pa-6">
+        <h4 class="grey-text font-italic pb-3">
           <span v-if="!allFieldsHaveValues">
             Results will display here when form is complete.</span
           ><span v-else
-            ><h3 style="color: black;">Result:</h3>
+            ><h3 class="black--text">Result:</h3>
             <pre>Sum: {{ sum }}</pre>
             <pre>Average: {{ average.toFixed(3) }}</pre>
           </span>
@@ -189,6 +192,8 @@ import {
   SECTION3_OPTIONS,
 } from '../assets/options';
 
+const BREAKPOINT = 700;
+
 const initValues = (arr) => arr.reduce((a, i) => ({ ...a, [i]: null }), {});
 
 const initOptions = (arr) => arr.map((o, i) => ({ text: o, value: i }));
@@ -231,13 +236,13 @@ export default {
       return this.sum / length;
     },
     onResize() {
-      this.isSmallWidth = window.innerWidth < 600;
+      this.isSmallWidth = window.innerWidth < BREAKPOINT;
     },
   },
   data() {
     return {
       e6: 1,
-      isSmallWidth: window.innerWidth < 600,
+      isSmallWidth: window.innerWidth < BREAKPOINT,
       sum: undefined,
       average: undefined,
       rules: [(v) => v !== null],
@@ -278,7 +283,6 @@ export default {
 }
 
 .card-stepper {
-  text-align: left;
   max-width: 800px;
 }
 
@@ -308,16 +312,8 @@ tbody tr:hover {
   word-break: keep-all;
 }
 
-#app .v-input--radio-group {
-  margin-top: 0px;
-}
-
 #app .v-messages {
   display: none;
-}
-
-#app .underline {
-  text-decoration: underline;
 }
 
 #app .prompt {
@@ -329,7 +325,6 @@ tbody tr:hover {
 
 ._table {
   display: grid;
-  padding-bottom: 20px;
   grid-gap: 20px;
 }
 
@@ -347,32 +342,13 @@ tbody tr:hover {
   display: grid;
   grid-gap: 10px;
   grid-template-rows: min-content min-content;
-  text-align: left;
   align-items: center;
 }
 
-.page-padding {
-  padding: 48px;
-}
-
 @media only screen and (max-width: 600px) {
-  .page-padding {
-    padding: 10px;
-  }
-
   #app .v-label {
     font-size: 16px !important;
   }
-}
-
-.results {
-  padding: 24px 24px 0px 24px;
-}
-
-.result-text {
-  font-style: oblique;
-  color: grey;
-  padding-bottom: 10px;
 }
 
 /* Table styles  */
