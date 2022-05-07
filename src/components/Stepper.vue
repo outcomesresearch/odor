@@ -21,116 +21,85 @@
         </p>
       </v-card-text>
     </v-card>
-    <v-stepper v-model="e6" vertical @change="handleStepChange">
+    <v-card>
       <div>
         <v-form ref="form1" v-model="section1.valid" lazy-validation>
-          <v-stepper-step
-            :complete="e6 > 1"
-            step="1"
-            editable
-            class="step-label"
-          >
+          <v-card-subtitle class="step-label">
             How severe are the following problems
             <strong>due to your nosebleeds</strong>?
-          </v-stepper-step>
-          <v-stepper-content step="1">
-            <div class="_table">
-              <div
-                class="_row"
-                v-for="prompt in section1.prompts"
-                :key="prompt"
+          </v-card-subtitle>
+          <v-card-text class="_table">
+            <div class="_row" v-for="prompt in section1.prompts" :key="prompt">
+              <div class="prompt">{{ prompt }}</div>
+              <v-radio-group
+                :column="isSmallWidth"
+                v-model="section1.values[prompt]"
+                @change="calculateResults"
+                :rules="rules"
               >
-                <div class="prompt">{{ prompt }}</div>
-                <v-radio-group
-                  :column="isSmallWidth"
-                  v-model="section1.values[prompt]"
-                  @change="calculateResults"
-                  :rules="rules"
-                >
-                  <v-radio
-                    v-for="option in section1.options"
-                    :key="option.text + option.value"
-                    :label="option.text"
-                    :value="option.value"
-                  ></v-radio>
-                </v-radio-group>
-              </div>
+                <v-radio
+                  v-for="option in section1.options"
+                  :key="option.text + option.value"
+                  :label="option.text"
+                  :value="option.value"
+                ></v-radio>
+              </v-radio-group>
             </div>
-          </v-stepper-content>
+          </v-card-text>
         </v-form>
+        <v-divider class="my-2"></v-divider>
         <v-form ref="form2" v-model="section2.valid" lazy-validation>
-          <v-stepper-step
-            :complete="e6 > 2"
-            step="2"
-            editable
-            class="step-label"
-          >
+          <v-card-subtitle class="step-label">
             How difficult is it to perform the following tasks
             <strong>due to your nosebleeds</strong>?
-          </v-stepper-step>
-          <v-stepper-content step="2" editable>
-            <div class="_table">
-              <div
-                class="_row"
-                v-for="prompt in section2.prompts"
-                :key="prompt"
+          </v-card-subtitle>
+          <v-card-text class="_table">
+            <div class="_row" v-for="prompt in section2.prompts" :key="prompt">
+              <div class="prompt">{{ prompt }}</div>
+              <v-radio-group
+                :column="isSmallWidth"
+                v-model="section2.values[prompt]"
+                @change="calculateResults"
+                :rules="rules"
               >
-                <div class="prompt">{{ prompt }}</div>
-                <v-radio-group
-                  :column="isSmallWidth"
-                  v-model="section2.values[prompt]"
-                  @change="calculateResults"
-                  :rules="rules"
-                >
-                  <v-radio
-                    v-for="option in section2.options"
-                    :key="option.text + option.value"
-                    :label="option.text"
-                    :value="option.value"
-                  ></v-radio>
-                </v-radio-group>
-              </div>
+                <v-radio
+                  v-for="option in section2.options"
+                  :key="option.text + option.value"
+                  :label="option.text"
+                  :value="option.value"
+                ></v-radio>
+              </v-radio-group>
             </div>
-          </v-stepper-content>
+          </v-card-text>
         </v-form>
+        <v-divider class="my-2"></v-divider>
         <v-form ref="form3" v-model="section3.valid" lazy-validation>
-          <v-stepper-step
-            :complete="e6 > 3"
-            step="3"
-            editable
-            class="step-label"
-          >
+          <v-card-subtitle class="step-label">
             How bothered are you by the following
             <strong>due to your nosebleeds</strong>?
-          </v-stepper-step>
-          <v-stepper-content step="3">
-            <div class="_table">
-              <div
-                class="_row"
-                v-for="prompt in section3.prompts"
-                :key="prompt"
+          </v-card-subtitle>
+          <v-card-text class="_table">
+            <div class="_row" v-for="prompt in section3.prompts" :key="prompt">
+              <div class="prompt">{{ prompt }}</div>
+              <v-radio-group
+                :column="isSmallWidth"
+                v-model="section3.values[prompt]"
+                @change="calculateResults"
+                :rules="rules"
               >
-                <div class="prompt">{{ prompt }}</div>
-                <v-radio-group
-                  :column="isSmallWidth"
-                  v-model="section3.values[prompt]"
-                  @change="calculateResults"
-                  :rules="rules"
-                >
-                  <v-radio
-                    v-for="option in section3.options"
-                    :key="option.text + option.value"
-                    :label="option.text"
-                    :value="option.value"
-                  ></v-radio>
-                </v-radio-group>
-              </div>
+                <v-radio
+                  v-for="option in section3.options"
+                  :key="option.text + option.value"
+                  :label="option.text"
+                  :value="option.value"
+                ></v-radio>
+              </v-radio-group>
             </div>
-          </v-stepper-content>
+          </v-card-text>
         </v-form>
       </div>
-      <v-divider></v-divider>
-      <div class="results">
+      <v-divider class="my-2"></v-divider>
+      <v-card-text class="results">
         <h4 class="result-text">
           <span v-if="!allFieldsHaveValues">
             Results will display here when form is complete.</span
@@ -202,8 +171,8 @@
           points in the sum score or 0.46 in the mean score between two times
           should be considered a clinically meaningful difference.
         </p>
-      </div>
-    </v-stepper>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -304,6 +273,10 @@ export default {
 </script>
 
 <style>
+#app .v-radio:not(:last-child) {
+  margin-right: 16px;
+}
+
 .card-stepper {
   text-align: left;
   max-width: 800px;
@@ -313,13 +286,22 @@ export default {
   color: rgba(0, 0, 0, 0.87);
 }
 
-tbody tr:hover,
-.v-stepper .v-stepper__step--editable:hover {
+tbody tr:hover {
   background-color: transparent !important;
+}
+
+#app .v-card__subtitle {
+  font-size: 18px;
 }
 
 #app .v-card__text p {
   font-size: 15px;
+}
+
+#app tr th,
+#app .v-input,
+#app .v-label {
+  font-size: 14px !important;
 }
 
 #app .v-card__title {
@@ -330,7 +312,7 @@ tbody tr:hover,
   margin-top: 0px;
 }
 
-#app .v-messages.error--text {
+#app .v-messages {
   display: none;
 }
 
@@ -338,28 +320,15 @@ tbody tr:hover,
   text-decoration: underline;
 }
 
-#app .v-stepper__content {
-  padding-left: 0px;
-}
-
-#app tr th,
-#app .v-input {
-  font-size: 14px !important;
-}
-
-#app .v-label {
-  font-size: 14px !important;
-}
-
 #app .prompt {
   word-wrap: break-word; /* old name */
   overflow-wrap: break-word;
   white-space: wrap;
+  font-size: 16px;
 }
 
 ._table {
   display: grid;
-  padding-left: 10px;
   padding-bottom: 20px;
   grid-gap: 20px;
 }
