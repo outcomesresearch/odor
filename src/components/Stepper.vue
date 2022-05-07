@@ -1,6 +1,6 @@
 <template>
   <div class="card-stepper mx-auto pa-3 pa-sm-12 text-left">
-    <v-card class="my-12 mt-0">
+    <v-card class="mb-12">
       <v-card-title>
         Nasal Outcome Score for Epistaxis in Hereditary Hemorrhagic
         Telangiectasia (NOSE HHT)
@@ -21,7 +21,7 @@
         </p>
       </v-card-text>
     </v-card>
-    <v-card>
+    <v-card class="mb-12">
       <div>
         <v-form ref="form1" v-model="section1.valid" lazy-validation>
           <v-card-subtitle class="step-label">
@@ -105,7 +105,7 @@
       <v-card-text class="pa-6">
         <h4 class="grey-text font-italic pb-3">
           <span v-if="!allFieldsHaveValues">
-            Results will display here when form is complete.</span
+            Result will display here when form is complete.</span
           ><span v-else
             ><h3 class="black--text">Result:</h3>
             <pre>Sum: {{ sum }}</pre>
@@ -167,12 +167,20 @@
             </tbody>
           </template>
         </v-simple-table>
+      </v-card-text>
+    </v-card>
+    <v-card>
+      <v-card-text>
         <p class="has-text-grey">
-          The NOSE HHT can be used to measure the change in physical and
-          functional problems, functional imitations, and emotional consequences
-          of nosebleeds over time and as a result of treatment. A change of 13
-          points in the sum score or 0.46 in the mean score between two times
-          should be considered a clinically meaningful difference.
+          When taken multiple times, NOSE HHT scores can be used to measure the
+          change in physical and functional problems, functional imitations, and
+          emotional consequences of nosebleeds over time and as a result of
+          treatment.
+        </p>
+        <p class="mb-0 has-text-grey">
+          A change of 13 points in the sum score, or 0.46 in the mean score
+          between two instances should be considered a clinically meaningful
+          difference.
         </p>
       </v-card-text>
     </v-card>
