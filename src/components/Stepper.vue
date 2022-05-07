@@ -106,8 +106,8 @@
         <h4 class="grey-text font-italic pb-3">
           <span v-if="!allFieldsHaveValues">
             Result will display here when form is complete.</span
-          ><span v-else
-            ><h3 class="black--text">Result:</h3>
+          ><span v-else class="results">
+            <h3 class="black--text">Result:</h3>
             <pre>Sum: {{ sum }}</pre>
             <pre>Average: {{ average.toFixed(3) }}</pre>
           </span>
@@ -116,7 +116,7 @@
           <template v-slot:default>
             <thead>
               <tr>
-                <th class="text-left">
+                <th class="text-left score-interp-title">
                   NOSE-HHT Score Interpretation
                 </th>
                 <th class="text-center">
@@ -135,11 +135,11 @@
                 <td class="text-left">Mild</td>
                 <td>
                   <div :class="sum <= 27 && `outline`">
-                    &lt;=27
+                    &le; 27
                   </div>
                 </td>
                 <td>
-                  <div :class="average <= 1 && `outline`">&lt;=1</div>
+                  <div :class="average <= 1 && `outline`">&le; 1</div>
                 </td>
               </tr>
               <tr class="moderate">
@@ -159,10 +159,10 @@
                 <td class="text-left">Severe</td>
                 <td>
                   <div :class="sum > 54 && `outline`">
-                    &gt;54
+                    &gt; 54
                   </div>
                 </td>
-                <td><div :class="average > 2 && `outline`">&gt;2</div></td>
+                <td><div :class="average > 2 && `outline`">&gt; 2</div></td>
               </tr>
             </tbody>
           </template>
@@ -306,6 +306,7 @@ tbody tr:hover {
   font-size: 18px;
 }
 
+#app .results,
 #app .v-card__text p {
   font-size: 15px;
 }
@@ -357,6 +358,9 @@ tbody tr:hover {
   #app .v-label {
     font-size: 16px !important;
   }
+  .score-interp-title {
+    width: 100px;
+  }
 }
 
 /* Table styles  */
@@ -370,13 +374,19 @@ tbody tr:hover {
 
 .mild .outline {
   border-color: #ffec19 !important;
+  -webkit-box-shadow: 0px 0px 2px #ffec19, inset 0px 0px 2px #ffec19;
+  box-shadow: 0px 0px 2px #ffec19, inset 0px 0px 2px #ffec19;
 }
 
 .moderate .outline {
   border-color: orange !important;
+  -webkit-box-shadow: 0px 0px 2px orange, inset 0px 0px 2px orange;
+  box-shadow: 0px 0px 2px orange, inset 0px 0px 2px orange;
 }
 
 .severe .outline {
   border-color: #f6412d !important;
+  -webkit-box-shadow: 0px 0px 2px #f6412d, inset 0px 0px 2px #f6412d;
+  box-shadow: 0px 0px 2px #f6412d, inset 0px 0px 2px #f6412d;
 }
 </style>
