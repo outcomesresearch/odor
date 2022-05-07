@@ -29,12 +29,16 @@
             <strong>due to your nosebleeds</strong>?
           </v-card-subtitle>
           <v-card-text class="_table pb-5">
-            <div class="_row" v-for="prompt in section1.prompts" :key="prompt">
+            <div
+              class="_row"
+              v-for="(prompt, i) in section1.prompts"
+              :key="prompt"
+            >
               <div class="prompt">{{ prompt }}</div>
               <v-radio-group
                 :column="isSmallWidth"
                 v-model="section1.values[prompt]"
-                @change="calculateResults"
+                @change="(value) => calculateResults(value, i, 1)"
                 :rules="rules"
                 class="mt-0"
               >
@@ -55,12 +59,16 @@
             <strong>due to your nosebleeds</strong>?
           </v-card-subtitle>
           <v-card-text class="_table pb-5">
-            <div class="_row" v-for="prompt in section2.prompts" :key="prompt">
+            <div
+              class="_row"
+              v-for="(prompt, i) in section2.prompts"
+              :key="prompt"
+            >
               <div class="prompt">{{ prompt }}</div>
               <v-radio-group
                 :column="isSmallWidth"
                 v-model="section2.values[prompt]"
-                @change="calculateResults"
+                @change="(value) => calculateResults(value, i, 2)"
                 :rules="rules"
                 class="mt-0"
               >
@@ -81,12 +89,16 @@
             <strong>due to your nosebleeds</strong>?
           </v-card-subtitle>
           <v-card-text class="_table pb-5">
-            <div class="_row" v-for="prompt in section3.prompts" :key="prompt">
+            <div
+              class="_row"
+              v-for="(prompt, i) in section3.prompts"
+              :key="prompt"
+            >
               <div class="prompt">{{ prompt }}</div>
               <v-radio-group
                 :column="isSmallWidth"
                 v-model="section3.values[prompt]"
-                @change="calculateResults"
+                @change="(value) => calculateResults(value, i, 3)"
                 :rules="rules"
                 class="mt-0"
               >
@@ -222,16 +234,19 @@ export default {
     },
   },
   methods: {
-    calculateResults() {
-      // If not all fields are answered yet, return, else update running results
-      if (!this.allFieldsHaveValues) return;
-      this.sum = this.calculateSum();
-      this.average = this.calculateAverage();
+    calculateResults(value, indexInSection, section) {
+      // If all fields have values, calculate results
+      if (this.allFieldsHaveValues) {
+        this.sum = this.calculateSum();
+        this.average = this.calculateAverage();
+      }
+
+      this.handleStepChange(indexInSection, section);
     },
-    handleStepChange(step) {
-      // If we're later than the first step, validate the previous step
-      if (parseInt(step) > 1) {
-        this.$refs[`form${parseInt(step) - 1}`].validate();
+    handleStepChange(indexInSection, section) {
+      // On first questions of steps 2 and 3, validate previous section's answers
+      if (parseInt(section) > 1 && indexInSection === 0) {
+        this.$refs[`form${parseInt(section) - 1}`].validate();
       }
     },
     calculateSum() {
