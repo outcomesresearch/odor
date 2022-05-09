@@ -15,10 +15,7 @@
           problems as they have been over
           <strong class="text-decoration-underline">the past two weeks</strong>.
         </p>
-        <p class="mb-0 has-text-grey">
-          Thank you for your participation. Do not hesitate to ask for
-          assistance if necessary.
-        </p>
+        <p class="mb-0 has-text-grey">Thank you for your participation.</p>
       </v-card-text>
     </v-card>
     <v-card class="mb-12">
@@ -185,8 +182,8 @@
       <v-card-text>
         <p class="has-text-grey">
           When taken multiple times, NOSE HHT scores can be used to measure the
-          change in physical and functional problems, functional limitations, and
-          emotional consequences of nosebleeds over time and as a result of
+          change in physical and functional problems, functional limitations,
+          and emotional consequences of nosebleeds over time and as a result of
           treatment.
         </p>
         <p class="mb-0 has-text-grey">
