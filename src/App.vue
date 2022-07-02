@@ -7,8 +7,7 @@
       <v-footer :padless="true">
         <v-card flat tile width="100%" class="grey-lighten-2 text-center">
           <v-card-text>
-            NOSE HHT Copyright 2020 Washington University School of Medicine,
-            St. Louis, Missouri
+            {{ $vuetify.lang.t(`$vuetify.${locale_keys.FOOTER_COPYWRIGHT}`) }}
           </v-card-text>
         </v-card>
       </v-footer>
@@ -23,6 +22,11 @@ export default {
   name: 'App',
   components: {
     Questionnaire,
+  },
+  mounted() {
+    setTimeout(() => {
+      this.$vuetify.lang.current = 'es_us';
+    }, 3000);
   },
 };
 </script>
