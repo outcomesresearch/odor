@@ -128,12 +128,8 @@
                 <th class="text-left score-interp-title">
                   NOSE-HHT Score Interpretation
                 </th>
-                <th class="text-center">
-                  Based on Sum
-                </th>
-                <th class="text-center">
-                  Based on Average
-                </th>
+                <th class="text-center">Based on Sum</th>
+                <th class="text-center">Based on Average</th>
               </tr>
             </thead>
             <tbody
@@ -143,9 +139,7 @@
               <tr class="mild">
                 <td class="text-left">Mild</td>
                 <td>
-                  <div :class="sum <= 27 && `outline`">
-                    &le; 27
-                  </div>
+                  <div :class="sum <= 27 && `outline`">&le; 27</div>
                 </td>
                 <td>
                   <div :class="average <= 1 && `outline`">&le; 1</div>
@@ -167,9 +161,7 @@
               <tr class="severe">
                 <td class="text-left">Severe</td>
                 <td>
-                  <div :class="sum > 54 && `outline`">
-                    &gt; 54
-                  </div>
+                  <div :class="sum > 54 && `outline`">&gt; 54</div>
                 </td>
                 <td><div :class="average > 2 && `outline`">&gt; 2</div></td>
               </tr>

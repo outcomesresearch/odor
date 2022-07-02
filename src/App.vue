@@ -2,7 +2,7 @@
   <outcomes-research-wrapper :_title="`NOSE HHT Questionnaire`">
     <v-app>
       <div id="app">
-        <Stepper msg="Welcome to Your Vue.js App" />
+        <Questionnaire />
       </div>
       <v-footer :padless="true">
         <v-card flat tile width="100%" class="grey-lighten-2 text-center">
@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import Stepper from './components/Stepper';
+import Questionnaire from './components/Questionnaire';
 
 export default {
   name: 'App',
   components: {
-    Stepper,
+    Questionnaire,
   },
 };
 </script>
