@@ -2,8 +2,13 @@
   <div class="card-stepper mx-auto pa-3 pa-sm-12 text-left">
     <v-card class="mb-12">
       <v-card-title>
-        Nasal Outcome Score for Epistaxis in Hereditary Hemorrhagic
-        Telangiectasia (NOSE HHT)
+        <div class="flow">
+          <span class="flow-around ml-2 mb-2">
+            <TranslationDropdown />
+          </span>
+          Nasal Outcome Score for Epistaxis in Hereditary Hemorrhagic
+          Telangiectasia (NOSE HHT)
+        </div>
       </v-card-title>
       <v-card-text>
         <p class="has-text-grey">
@@ -189,6 +194,7 @@
 </template>
 
 <script>
+import TranslationDropdown from './TranslationDropdown';
 import {
   SECTION1_PROMPTS,
   SECTION2_PROMPTS,
@@ -214,6 +220,7 @@ const fetchAllValues = (sections) => {
 };
 
 export default {
+  components: { TranslationDropdown },
   computed: {
     allFieldsHaveValues() {
       return fetchAllValues(this.allSections).every((e) => e !== null);
@@ -290,6 +297,11 @@ export default {
 </script>
 
 <style>
+.flow-around {
+  float: right;
+  width: 82px;
+}
+
 #app .v-radio:not(:last-child) {
   margin-right: 16px;
 }
