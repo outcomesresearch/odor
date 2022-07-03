@@ -11,7 +11,7 @@
     </template>
     <v-list>
       <v-list-item
-        v-for="(c, i) in countries"
+        v-for="(c, i) in availableCountries"
         :key="i"
         @change="changeLanguage(c)"
       >
@@ -71,6 +71,13 @@ export default {
     changeLanguage(newLanguage) {
       this.selected = newLanguage;
       this.$vuetify.lang.current = newLanguage.name;
+    },
+  },
+  computed: {
+    availableCountries() {
+      return countries.filter(({ name }) =>
+        this.selected === null ? name !== 'en_us' : this.selected.name !== name,
+      );
     },
   },
   data() {
