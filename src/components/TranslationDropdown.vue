@@ -47,7 +47,7 @@ const countries = [
   },
 
   {
-    name: 'dt_nl',
+    name: 'nl_nl',
     locale: 'Nederlands',
     flag: 'em-flag-nl',
     abbr: 'NL',
