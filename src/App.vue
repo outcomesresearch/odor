@@ -6,9 +6,7 @@
       </div>
       <v-footer :padless="true">
         <v-card flat tile width="100%" class="grey-lighten-2 text-center">
-          <v-card-text>
-            {{ $vuetify.lang.t(`$vuetify.${locale_keys.FOOTER_COPYWRIGHT}`) }}
-          </v-card-text>
+          <v-card-text>{{ t(k.FOOTER_COPYWRIGHT) }}</v-card-text>
         </v-card>
       </v-footer>
     </v-app>
@@ -22,11 +20,6 @@ export default {
   name: 'App',
   components: {
     Questionnaire,
-  },
-  mounted() {
-    setTimeout(() => {
-      this.$vuetify.lang.current = 'es_us';
-    }, 3000);
   },
 };
 </script>

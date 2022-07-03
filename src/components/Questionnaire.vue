@@ -3,32 +3,27 @@
     <v-card class="mb-12">
       <v-card-title>
         <div class="flow">
-          <span class="flow-around ml-2 mb-2">
-            <TranslationDropdown />
-          </span>
-          Nasal Outcome Score for Epistaxis in Hereditary Hemorrhagic
-          Telangiectasia (NOSE HHT)
+          <span class="flow-around ml-3 mb-3"> <TranslationDropdown /> </span
+          >{{ t(k.HEADER_TITLE) }}
         </div>
       </v-card-title>
       <v-card-text>
         <p class="has-text-grey">
-          Below you will find a list of physical, functional, and emotional
-          consequences of your nosebleeds. We would like to know more about
-          these problems and would appreciate you answering the following
-          questions to the best of your ability. There are no right or wrong
-          answers, as your responses are unique to you. Please rate your
-          problems as they have been over
-          <strong class="text-decoration-underline">the past two weeks</strong>.
+          {{ t(k.HEADER_BODY_1) }}
+          <strong class="text-decoration-underline">
+            {{ t(k.HEADER_BODY_2) }}</strong
+          >{{ t(k.HEADER_BODY_3) }}
         </p>
-        <p class="mb-0 has-text-grey">Thank you for your participation.</p>
+        <p class="mb-0 has-text-grey">{{ t(k.HEADER_BODY_4) }}</p>
       </v-card-text>
     </v-card>
     <v-card class="mb-12">
       <div>
         <v-form ref="form1" v-model="section1.valid" lazy-validation>
           <v-card-subtitle class="step-label">
-            How severe are the following problems
-            <strong>due to your nosebleeds</strong>?
+            {{ t(k.SECTION1_INSTRUCTIONS_1) }}
+            <strong>{{ t(k.SECTION1_INSTRUCTIONS_2) }}</strong
+            >{{ t(k.SECTION1_INSTRUCTIONS_3) }}
           </v-card-subtitle>
           <v-card-text class="_table pb-5">
             <div
@@ -36,7 +31,7 @@
               v-for="(prompt, i) in section1.prompts"
               :key="prompt"
             >
-              <div class="prompt">{{ prompt }}</div>
+              <div class="prompt">{{ t(k[prompt]) }}</div>
               <v-radio-group
                 :column="isSmallWidth"
                 v-model="section1.values[prompt]"
@@ -47,7 +42,7 @@
                 <v-radio
                   v-for="option in section1.options"
                   :key="option.text + option.value"
-                  :label="option.text"
+                  :label="t(k[option.text])"
                   :value="option.value"
                 ></v-radio>
               </v-radio-group>
@@ -57,8 +52,9 @@
         <v-divider class="my-2"></v-divider>
         <v-form ref="form2" v-model="section2.valid" lazy-validation>
           <v-card-subtitle class="step-label">
-            How difficult is it to perform the following tasks
-            <strong>due to your nosebleeds</strong>?
+            {{ t(k.SECTION2_INSTRUCTIONS_1) }}
+            <strong>{{ t(k.SECTION2_INSTRUCTIONS_2) }}</strong
+            >{{ t(k.SECTION2_INSTRUCTIONS_3) }}
           </v-card-subtitle>
           <v-card-text class="_table pb-5">
             <div
@@ -66,7 +62,7 @@
               v-for="(prompt, i) in section2.prompts"
               :key="prompt"
             >
-              <div class="prompt">{{ prompt }}</div>
+              <div class="prompt">{{ t(k[prompt]) }}</div>
               <v-radio-group
                 :column="isSmallWidth"
                 v-model="section2.values[prompt]"
@@ -77,7 +73,7 @@
                 <v-radio
                   v-for="option in section2.options"
                   :key="option.text + option.value"
-                  :label="option.text"
+                  :label="t(k[option.text])"
                   :value="option.value"
                 ></v-radio>
               </v-radio-group>
@@ -87,8 +83,9 @@
         <v-divider class="my-2"></v-divider>
         <v-form ref="form3" v-model="section3.valid" lazy-validation>
           <v-card-subtitle class="step-label">
-            How bothered are you by the following
-            <strong>due to your nosebleeds</strong>?
+            {{ t(k.SECTION3_INSTRUCTIONS_1) }}
+            <strong>{{ t(k.SECTION3_INSTRUCTIONS_2) }}</strong
+            >{{ t(k.SECTION3_INSTRUCTIONS_3) }}
           </v-card-subtitle>
           <v-card-text class="_table pb-5">
             <div
@@ -96,7 +93,7 @@
               v-for="(prompt, i) in section3.prompts"
               :key="prompt"
             >
-              <div class="prompt">{{ prompt }}</div>
+              <div class="prompt">{{ t(k[prompt]) }}</div>
               <v-radio-group
                 :column="isSmallWidth"
                 v-model="section3.values[prompt]"
@@ -107,7 +104,7 @@
                 <v-radio
                   v-for="option in section3.options"
                   :key="option.text + option.value"
-                  :label="option.text"
+                  :label="t(k[option.text])"
                   :value="option.value"
                 ></v-radio>
               </v-radio-group>
@@ -142,7 +139,7 @@
               :class="allFieldsHaveValues ? `showOutlines` : ''"
             >
               <tr class="mild">
-                <td class="text-left">Mild</td>
+                <td class="text-left">{{ t(k.INTERPRETATION_MILD) }}</td>
                 <td>
                   <div :class="sum <= 27 && `outline`">&le; 27</div>
                 </td>
@@ -151,7 +148,7 @@
                 </td>
               </tr>
               <tr class="moderate">
-                <td class="text-left">Moderate</td>
+                <td class="text-left">{{ t(k.INTERPRETATION_MODERATE) }}</td>
                 <td>
                   <div :class="sum >= 28 && sum <= 54 && `outline`">
                     28 to 54
@@ -164,7 +161,7 @@
                 </td>
               </tr>
               <tr class="severe">
-                <td class="text-left">Severe</td>
+                <td class="text-left">{{ t(k.INTERPRETATION_SEVERE) }}</td>
                 <td>
                   <div :class="sum > 54 && `outline`">&gt; 54</div>
                 </td>
@@ -195,17 +192,7 @@
 
 <script>
 import TranslationDropdown from './TranslationDropdown';
-import {
-  SECTION1_PROMPTS,
-  SECTION2_PROMPTS,
-  SECTION3_PROMPTS,
-} from '../assets/prompts';
-
-import {
-  SECTION1_OPTIONS,
-  SECTION2_OPTIONS,
-  SECTION3_OPTIONS,
-} from '../assets/options';
+import keys from '../assets/locales/keys';
 
 const BREAKPOINT = 700;
 
@@ -218,6 +205,16 @@ const fetchAllValues = (sections) => {
     .map(({ values }) => Object.entries(values).map(([, value]) => value))
     .flat();
 };
+
+const getMatchingKeys = (stub) =>
+  Object.keys(keys).filter((k) => k.includes(stub));
+
+const SECTION1_PROMPTS = getMatchingKeys('SECTION1_PROMPT');
+const SECTION1_OPTIONS = getMatchingKeys('SECTION1_OPTION');
+const SECTION2_PROMPTS = getMatchingKeys('SECTION2_PROMPT');
+const SECTION2_OPTIONS = getMatchingKeys('SECTION2_OPTION');
+const SECTION3_PROMPTS = getMatchingKeys('SECTION3_PROMPT');
+const SECTION3_OPTIONS = getMatchingKeys('SECTION3_OPTION');
 
 export default {
   components: { TranslationDropdown },
