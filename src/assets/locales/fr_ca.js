@@ -3,7 +3,8 @@ import { fr } from 'vuetify/lib/locale/';
 
 export default {
   ...fr, // existing vuetify translation entries
-  [keys.FOOTER_COPYWRIGHT]: 'French canadian version of copywright footer',
+  [keys.FOOTER_COPYWRIGHT]:
+    'NOSE HHT Copyright 2020 Washington University School of Medicine, St. Louis, Missouri',
   [keys.INTERPRETATION_MILD]: 'Licht',
   [keys.INTERPRETATION_MODERATE]: 'Matig',
   [keys.INTERPRETATION_SEVERE]: 'Ernstig',
