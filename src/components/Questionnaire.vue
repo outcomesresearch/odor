@@ -144,7 +144,7 @@
               :class="allFieldsHaveValues ? `showOutlines` : ''"
             >
               <tr class="mild">
-                <td class="text-left">{{ t(k.INTERPRETATION_MILD) }}</td>
+                <td class="text-left">Mild</td>
                 <td>
                   <div :class="sum <= 27 && `outline`">&le; 27</div>
                 </td>
@@ -153,7 +153,7 @@
                 </td>
               </tr>
               <tr class="moderate">
-                <td class="text-left">{{ t(k.INTERPRETATION_MODERATE) }}</td>
+                <td class="text-left">Moderate</td>
                 <td>
                   <div :class="sum >= 28 && sum <= 54 && `outline`">
                     28 to 54
@@ -166,7 +166,7 @@
                 </td>
               </tr>
               <tr class="severe">
-                <td class="text-left">{{ t(k.INTERPRETATION_SEVERE) }}</td>
+                <td class="text-left">Severe</td>
                 <td>
                   <div :class="sum > 54 && `outline`">&gt; 54</div>
                 </td>
