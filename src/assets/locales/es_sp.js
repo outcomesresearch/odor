@@ -18,8 +18,7 @@ export default {
   [keys.SECTION1_INSTRUCTIONS_1]:
     'Califique la gravedad de los siguientes problemas ',
   [keys.SECTION1_INSTRUCTIONS_2]: 'como consecuencia de sus sangrados de nariz',
-  [keys.SECTION1_INSTRUCTIONS_3]:
-    'y para ello, rodee con un círculo el número que refleje cómo han sido de "malos" cada uno de ellos:',
+  [keys.SECTION1_INSTRUCTIONS_3]: ':',
 
   [keys.SECTION2_INSTRUCTIONS_1]:
     'Califique la dificultad con la que lleva a cabo las siguientes tareas ',

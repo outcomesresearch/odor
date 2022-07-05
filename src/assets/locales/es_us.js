@@ -17,14 +17,13 @@ export default {
   [keys.SECTION1_INSTRUCTIONS_1]:
     'Para calificar el grado de gravedad de los siguientes problemas',
   [keys.SECTION1_INSTRUCTIONS_2]: ' provocados por los sangrados nasales',
-  [keys.SECTION1_INSTRUCTIONS_3]:
-    ', marque con un círculo el número que mejor refleje lo “malo” que ha sido para usted cada problema:',
+  [keys.SECTION1_INSTRUCTIONS_3]: ':',
 
   [keys.SECTION2_INSTRUCTIONS_1]:
     'Califique lo difícil que le ha resultado hacer lo siguiente ',
   [keys.SECTION2_INSTRUCTIONS_2]: 'debido a los sangrados nasales',
   [keys.SECTION2_INSTRUCTIONS_3]: ':',
-  
+
   [keys.SECTION3_INSTRUCTIONS_1]:
     'Califique cuánto le ha molestado lo siguiente ',
   [keys.SECTION3_INSTRUCTIONS_2]: 'debido a los sangrados nasales',

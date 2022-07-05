@@ -16,9 +16,8 @@ export default {
   [keys.HEADER_BODY_4]: 'Nous vous remercions de votre participation.',
 
   [keys.SECTION1_INSTRUCTIONS_1]: 'Veuillez évaluer les problèmes suivants ',
-  [keys.SECTION1_INSTRUCTIONS_2]: 'dus à vos saignements de nez',
-  [keys.SECTION1_INSTRUCTIONS_3]:
-    ' en encerclant le chiffre qui correspond à la gravité de chaque problème :',
+  [keys.SECTION1_INSTRUCTIONS_2]: 'dus à vos saignements de nez ',
+  [keys.SECTION1_INSTRUCTIONS_3]: ':',
 
   [keys.SECTION2_INSTRUCTIONS_1]:
     'Veuillez évaluer à quel point il est difficile pour vous d’effectuer les tâches suivantes ',
@@ -68,14 +67,16 @@ export default {
   [keys.SECTION2_PROMPT_10]: 'Voyager (p. ex. en avion) ',
   [keys.SECTION2_PROMPT_11]: 'S’endormir ',
   [keys.SECTION2_PROMPT_12]: 'Nettoyer votre maison/appartement',
-  [keys.SECTION2_PROMPT_13]: 'Aller dehors, quel que soit le temps ou la saison',
+  [keys.SECTION2_PROMPT_13]:
+    'Aller dehors, quel que soit le temps ou la saison',
   [keys.SECTION2_PROMPT_14]: 'Cuisiner/préparer des repas',
 
   [keys.SECTION3_PROMPT_1]: 'Peur de saigner du nez en public',
   [keys.SECTION3_PROMPT_2]:
     'Peur de ne pas savoir quand se produira votre prochain saignement de nez',
   [keys.SECTION3_PROMPT_3]: 'Avoir du sang sur vos vêtements',
-  [keys.SECTION3_PROMPT_4]: 'Peur de ne pas pouvoir arrêter un saignement de nez',
+  [keys.SECTION3_PROMPT_4]:
+    'Peur de ne pas pouvoir arrêter un saignement de nez',
   [keys.SECTION3_PROMPT_5]: 'Gêne',
   [keys.SECTION3_PROMPT_6]: 'Frustration/agitation/irritabilité',
   [keys.SECTION3_PROMPT_7]: 'Baisse de concentration ',

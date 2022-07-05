@@ -15,9 +15,10 @@ export default {
   [keys.HEADER_BODY_2]: 'the past two weeks.',
   [keys.HEADER_BODY_3]: '',
   [keys.HEADER_BODY_4]: 'Thank you for your participation.',
-  [keys.SECTION1_INSTRUCTIONS_1]: 'How severe are the following problems ',
+  [keys.SECTION1_INSTRUCTIONS_1]:
+    'Please rate how severe the following problems are ',
   [keys.SECTION1_INSTRUCTIONS_2]: 'due to your nosebleeds',
-  [keys.SECTION1_INSTRUCTIONS_3]: '?',
+  [keys.SECTION1_INSTRUCTIONS_3]: ':',
 
   [keys.SECTION2_INSTRUCTIONS_1]: 'How bothered are you by the following ',
   [keys.SECTION2_INSTRUCTIONS_2]: 'due to your nosebleeds',
@@ -27,9 +28,8 @@ export default {
     'How difficult is it to perform the following tasks ',
   [keys.SECTION2_INSTRUCTIONS_2]: 'due to your nosebleeds',
   [keys.SECTION2_INSTRUCTIONS_3]: '?',
-  
-  [keys.SECTION3_INSTRUCTIONS_1]:
-    'How bothered are you by the following ',
+
+  [keys.SECTION3_INSTRUCTIONS_1]: 'How bothered are you by the following ',
   [keys.SECTION3_INSTRUCTIONS_2]: 'due to your nosebleeds',
   [keys.SECTION3_INSTRUCTIONS_3]: '?',
 

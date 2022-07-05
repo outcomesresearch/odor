@@ -18,8 +18,7 @@ export default {
   [keys.SECTION1_INSTRUCTIONS_1]:
     'Beoordeel de ernst van de volgende problemen ',
   [keys.SECTION1_INSTRUCTIONS_2]: 'als gevolg van uw neusbloedingen',
-  [keys.SECTION1_INSTRUCTIONS_3]:
-    ' door het nummer te omcirkelen dat aangeeft hoe ‘erg’ elk probleem is:',
+  [keys.SECTION1_INSTRUCTIONS_3]: ':',
 
   [keys.SECTION2_INSTRUCTIONS_1]:
     'Beoordeel hoe moeilijk het is om de volgende taken uit te voeren ',
@@ -63,7 +62,8 @@ export default {
   [keys.SECTION2_PROMPT_5]: 'Uw werk doen of naar school gaan',
   [keys.SECTION2_PROMPT_6]: 'In slaap blijven',
   [keys.SECTION2_PROMPT_7]: 'Tijd doorbrengen met vrienden/familie',
-  [keys.SECTION2_PROMPT_8]: 'Bepaalde gerechten eten (bijvoorbeeld pittig eten)',
+  [keys.SECTION2_PROMPT_8]:
+    'Bepaalde gerechten eten (bijvoorbeeld pittig eten)',
   [keys.SECTION2_PROMPT_9]: 'Intiem zijn met echtgenoot/echtgenote of partner',
   [keys.SECTION2_PROMPT_10]: 'Reizen (bv. per vliegtuig)',
   [keys.SECTION2_PROMPT_11]: 'In slaap vallen',

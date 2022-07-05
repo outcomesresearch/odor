@@ -54,13 +54,13 @@ const countries = [
   },
   {
     name: 'it_it',
-    locale: 'italiano',
+    locale: 'Italiano',
     flag: 'em-flag-it',
     abbr: 'IT',
   },
   {
     name: 'fr_ca',
-    locale: 'français',
+    locale: 'Français',
     flag: 'em-flag-ca',
     abbr: 'FR',
   },

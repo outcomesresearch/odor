@@ -17,8 +17,7 @@ export default {
 
   [keys.SECTION1_INSTRUCTIONS_1]: 'Valuti la gravità dei seguenti problemi ',
   [keys.SECTION1_INSTRUCTIONS_2]: 'dovuti ai Suoi sanguinamenti nasali',
-  [keys.SECTION1_INSTRUCTIONS_3]:
-    ' facendo un cerchio intorno al numero che corrisponde alla “gravità” di ciascun problema:',
+  [keys.SECTION1_INSTRUCTIONS_3]: ':',
 
   [keys.SECTION2_INSTRUCTIONS_1]:
     'Valuti la difficoltà di svolgimento delle seguenti attività ',
