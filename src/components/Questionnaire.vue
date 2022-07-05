@@ -114,15 +114,20 @@
       </div>
       <v-divider class="my-2"></v-divider>
       <v-card-text class="pa-6">
-        <h4 class="grey-text font-italic pb-3">
-          <span v-if="!allFieldsHaveValues">
-            Result will display here when form is complete.</span
-          ><span v-else class="results">
-            <h3 class="black--text">Result:</h3>
-            <pre>Sum: {{ sum }}</pre>
-            <pre>Average: {{ average.toFixed(3) }}</pre>
-          </span>
-        </h4>
+        <div>
+          <div class="disclaimer pb-2" v-if="$vuetify.lang.current != 'en_us'">
+            {{ t(k.SCORE_ONLY_IN_ENGLISH) }}<v-divider></v-divider>
+          </div>
+          <h4 v-if="!allFieldsHaveValues" class="grey-text font-italic pb-3">
+            Result will display here when form is complete.
+          </h4>
+        </div>
+        <div v-if="allFieldsHaveValues" class="results">
+          <h3 class="black--text">Result:</h3>
+          <pre>Sum: {{ sum }}</pre>
+          <pre>Average: {{ average.toFixed(3) }}</pre>
+        </div>
+
         <v-simple-table class="my-2">
           <template v-slot:default>
             <thead>
@@ -297,6 +302,10 @@ export default {
 .flow-around {
   float: right;
   width: 82px;
+}
+
+.v-divider {
+  margin: 10px 0px;
 }
 
 #app .v-radio:not(:last-child) {

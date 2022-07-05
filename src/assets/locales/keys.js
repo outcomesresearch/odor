@@ -3,6 +3,7 @@ export default {
   INTERPRETATION_MILD: 'mild descriptor in interpretation table',
   INTERPRETATION_MODERATE: 'moderate descriptor in interpretation table',
   INTERPRETATION_SEVERE: 'severe descriptor in interpretation table',
+  SCORE_ONLY_IN_ENGLISH: 'No translations yet discliamer',
   HEADER_TITLE: 'title of top card',
   HEADER_BODY_1: 'first section of top card body',
   HEADER_BODY_2: 'one bold section in top card body',

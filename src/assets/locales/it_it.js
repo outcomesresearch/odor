@@ -7,6 +7,8 @@ export default {
   [keys.INTERPRETATION_MILD]: 'Lieve',
   [keys.INTERPRETATION_MODERATE]: 'Moderato',
   [keys.INTERPRETATION_SEVERE]: 'Grave',
+  [keys.SCORE_ONLY_IN_ENGLISH]:
+    "L'interpretazione della punteggio è temporaneamente disponibile solo in inglese",
   [keys.HEADER_TITLE]:
     "Punteggio dell'esito nasale relativo all’epistassi nella teleangectasia emorragica ereditaria (NOSE HHT)",
   [keys.HEADER_BODY_1]:

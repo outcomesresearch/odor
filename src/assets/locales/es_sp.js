@@ -7,6 +7,8 @@ export default {
   [keys.INTERPRETATION_MILD]: 'Leve',
   [keys.INTERPRETATION_MODERATE]: 'Moderato',
   [keys.INTERPRETATION_SEVERE]: 'Grave',
+  [keys.SCORE_ONLY_IN_ENGLISH]:
+    'La interpretación de la puntuación solo está disponible temporalmente en inglés',
   [keys.HEADER_TITLE]:
     'Escala de las consecuencias nasales de la epistaxis en la telangiectasia hemorrágica hereditaria (NOSE HHT)',
   [keys.HEADER_BODY_1]:

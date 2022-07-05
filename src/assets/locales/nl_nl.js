@@ -7,6 +7,8 @@ export default {
   [keys.INTERPRETATION_MILD]: 'Licht',
   [keys.INTERPRETATION_MODERATE]: 'Matig',
   [keys.INTERPRETATION_SEVERE]: 'Ernstig',
+  [keys.SCORE_ONLY_IN_ENGLISH]:
+    'Partituurinterpretatie is tijdelijk alleen beschikbaar in het Engels',
   [keys.HEADER_TITLE]:
     'Score voor neusbloedingen bij hereditaire hemorrhagische teleangiëctasie of ziekte van Rendu Osler Weber (NOSE HHT)',
   [keys.HEADER_BODY_1]:

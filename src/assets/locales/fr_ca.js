@@ -7,6 +7,8 @@ export default {
   [keys.INTERPRETATION_MILD]: 'Licht',
   [keys.INTERPRETATION_MODERATE]: 'Matig',
   [keys.INTERPRETATION_SEVERE]: 'Ernstig',
+  [keys.SCORE_ONLY_IN_ENGLISH]:
+    "L'interprétation de score est temporairement disponible uniquement en anglais",
   [keys.HEADER_TITLE]:
     'Score du résultat nasal pour l’épistaxis liée à la télangiectasie hémorragique héréditaire (NOSE-HHT)',
   [keys.HEADER_BODY_1]:

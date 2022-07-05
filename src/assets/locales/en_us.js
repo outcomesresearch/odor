@@ -8,6 +8,8 @@ export default {
   [keys.INTERPRETATION_MILD]: 'Mild',
   [keys.INTERPRETATION_MODERATE]: 'Moderate',
   [keys.INTERPRETATION_SEVERE]: 'Severe',
+  [keys.SCORE_ONLY_IN_ENGLISH]:
+    'Score interpretation is temporarily only available in English',
   [keys.HEADER_TITLE]:
     'Nasal Outcome Score for Epistaxis in Hereditary Hemorrhagic  Telangiectasia (NOSE HHT)',
   [keys.HEADER_BODY_1]:
