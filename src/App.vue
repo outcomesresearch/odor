@@ -1,9 +1,7 @@
 <template>
   <outcomes-research-wrapper :_title="`NOSE HHT Questionnaire`">
     <v-app>
-      <div id="app">
-        <Questionnaire />
-      </div>
+      <Questionnaire />
       <v-footer :padless="true">
         <v-card flat tile width="100%" class="grey-lighten-2 text-center">
           <v-card-text>{{ t(k.FOOTER_COPYWRIGHT) }}</v-card-text>
