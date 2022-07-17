@@ -1,2 +1,5 @@
-# nose-hht
-Nasal Outcome Score for Epistaxis in Hereditary Hemorrhagic Telangiectasia (NOSE HHT)
+# Olfactory Dysfunction Outcomes Rating (ODOR)
+Questionnaire to score severity of olfactory dysfunction.  Written in Vue.js + Vuetify, deployed with Github Pages.
+
+
+

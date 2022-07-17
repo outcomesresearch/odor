@@ -1,5 +1,5 @@
 <template>
-  <outcomes-research-wrapper :_title="`NOSE HHT Questionnaire`">
+  <outcomes-research-wrapper :_title="`ODOR Questionnaire`">
     <v-app>
       <Questionnaire />
       <v-footer :padless="true">
@@ -30,23 +30,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 
-  tbody tr:hover {
-    background-color: transparent !important;
-  }
-  th:first-child,
-  td:first-child {
-    padding-left: 0px !important;
-  }
-
-  th:last-child,
-  td:last-child {
-    padding-right: 0px !important;
-  }
-
-  .v-card__text {
-    font-size: 15px;
-  }
-
   .v-text-field__details {
     display: none;
   }
@@ -55,7 +38,6 @@ export default {
     line-height: 1.3;
   }
 
-  tr th,
   .v-input,
   .v-label {
     font-size: 14px !important;
