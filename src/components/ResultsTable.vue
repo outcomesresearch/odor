@@ -4,15 +4,60 @@
       <div class="disclaimer pb-2" v-if="$vuetify.lang.current != 'en_us'">
         {{ t(k.SCORE_ONLY_IN_ENGLISH) }}<v-divider></v-divider>
       </div>
-      <h4 v-if="!allFieldsHaveValues" class="font-italic">
+      <h4 v-if="!allFieldsHaveValues" class="font-italic mb-4">
         Result will display here when form is complete.
       </h4>
     </div>
-    <div v-if="allFieldsHaveValues" class="results">
+    <div v-if="allFieldsHaveValues" class="results mb-4">
       <h3 class="black--text mb-2">Result:</h3>
       <pre>Sum: {{ sum }}</pre>
       <pre>Average: {{ average.toFixed(3) }}</pre>
     </div>
+    <v-simple-table>
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th class="text-left score-interp-title">
+              ODOR Score Interpretation
+            </th>
+            <th class="text-center">Based on Sum</th>
+            <th class="text-center">Based on Average</th>
+          </tr>
+        </thead>
+        <tbody
+          class="text-center"
+          :class="allFieldsHaveValues ? `showOutlines` : ''"
+        >
+          <tr class="mild">
+            <td class="text-left">Mild</td>
+            <td>
+              <div :class="sum <= 20 && `outline`">&le; 20</div>
+            </td>
+            <td>
+              <div :class="average <= 0.7 && `outline`">&le; 0.70</div>
+            </td>
+          </tr>
+          <tr class="moderate">
+            <td class="text-left">Moderate</td>
+            <td>
+              <div :class="sum >= 21 && sum <= 40 && `outline`">21 to 40</div>
+            </td>
+            <td>
+              <div :class="average > 0.7 && average <= 1.4 && `outline`">
+                0.70 to 1.4
+              </div>
+            </td>
+          </tr>
+          <tr class="severe">
+            <td class="text-left">Severe</td>
+            <td>
+              <div :class="sum > 40 && `outline`">&gt; 40</div>
+            </td>
+            <td><div :class="average > 1.4 && `outline`">&gt; 1.4</div></td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
   </v-card-text>
 </template>
 
@@ -62,4 +107,35 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import '../assets/scss/breakpoints.scss';
+/* Table styles  */
+.showOutlines .outline {
+  border-radius: 10px;
+  border-width: 3px !important;
+  border-style: solid;
+  margin: 2px;
+  padding: 4px;
+}
+.mild .outline {
+  border-color: #ffec19 !important;
+  -webkit-box-shadow: 0px 0px 2px #ffec19, inset 0px 0px 2px #ffec19;
+  box-shadow: 0px 0px 2px #ffec19, inset 0px 0px 2px #ffec19;
+}
+.moderate .outline {
+  border-color: orange !important;
+  -webkit-box-shadow: 0px 0px 2px orange, inset 0px 0px 2px orange;
+  box-shadow: 0px 0px 2px orange, inset 0px 0px 2px orange;
+}
+.severe .outline {
+  border-color: #f6412d !important;
+  -webkit-box-shadow: 0px 0px 2px #f6412d, inset 0px 0px 2px #f6412d;
+  box-shadow: 0px 0px 2px #f6412d, inset 0px 0px 2px #f6412d;
+}
+
+@media only screen and (max-width: $SMALL) {
+  .score-interp-title {
+    width: 100px;
+  }
+}
+</style>

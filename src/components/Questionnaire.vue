@@ -68,6 +68,20 @@
       <v-divider class="my-2" />
       <ResultsTable :allSections="[section1, section2]" />
     </v-card>
+    <v-card>
+      <v-card-text>
+        <p class="grey--text text--darken-3">
+          When taken multiple times, ODOR scores can be used to measure the
+          change in physical and functional problems, functional limitations,
+          and emotional consequences of olfactory dysfunfunction over time.
+        </p>
+        <p class="mb-0 grey--text text--darken-3">
+          A change of 15 points in the sum score, or 0.50 in the mean score
+          between two instances should be considered a clinically meaningful
+          difference.
+        </p>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
