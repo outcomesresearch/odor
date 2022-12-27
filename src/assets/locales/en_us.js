@@ -3,8 +3,8 @@ import { en } from 'vuetify/lib/locale/';
 
 export default {
   ...en, // existing vuetify translation entries
-  [keys.FOOTER_COPYWRIGHT]:
-    'ODOR Questionnaire Copyright Washington University, 2022',
+  [keys.FOOTER_COPYRIGHT]:
+    'ODOR Questionnaire Copyright © 2022, Washington University School of Medicine, St. Louis, Missouri',
   [keys.INTERPRETATION_MILD]: 'Mild',
   [keys.INTERPRETATION_MODERATE]: 'Moderate',
   [keys.INTERPRETATION_SEVERE]: 'Severe',

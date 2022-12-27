@@ -1,5 +1,5 @@
 export default {
-  FOOTER_COPYWRIGHT: 'copywright in footer',
+  FOOTER_COPYRIGHT: 'copywright in footer',
   INTERPRETATION_MILD: 'mild descriptor in interpretation table',
   INTERPRETATION_MODERATE: 'moderate descriptor in interpretation table',
   INTERPRETATION_SEVERE: 'severe descriptor in interpretation table',
